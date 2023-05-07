@@ -1,0 +1,24 @@
+class Solution {
+public:
+    int maxSubArray(vector<int>& nums) {
+        int ans = 0 , sum = 0; 
+        int n = nums.size() ; 
+        // checking if all element are negative then returning max of all
+        if(*max_element(nums.begin() , nums.end())<0){
+            
+            return *max_element(nums.begin() , nums.end()) ;
+        }
+
+        // if all element are not negative then aplying kadanes algorithm .
+        for(int i = 0 ; i<n ; i++){
+            sum += nums[i];
+
+            if(sum<0)
+                sum = 0;
+            ans = max(ans,sum);
+        }
+        return ans ;
+        
+        
+    }
+};
